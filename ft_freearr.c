@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_freearr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykaplien <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ykaplien <ykaplien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/24 16:30:08 by ykaplien          #+#    #+#             */
-/*   Updated: 2018/03/24 18:17:29 by ykaplien         ###   ########.fr       */
+/*   Created: 2018/05/31 15:00:45 by ykaplien          #+#    #+#             */
+/*   Updated: 2018/09/17 17:22:26 by ykaplien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_freearr(char **arr)
 {
-	char to_f;
+	int i;
 
-	to_f = (char)c;
-	if (to_f == '\0')
+	i = 0;
+	while (arr[i])
 	{
-		while (*s)
-			s++;
-		return ((char *)s);
+		ft_strdel(&arr[i]);
+		i++;
 	}
-	while (s && *s)
-	{
-		if (*s == to_f)
-			return ((char *)s);
-		s++;
-	}
-	return (NULL);
+	free(arr);
+	arr = NULL;
 }
